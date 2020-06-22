@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:spring="http://www.mulesoft.org/schema/mule/spring" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/spring http://www.mulesoft.org/schema/mule/spring/current/mule-spring.xsd">
+	<sub-flow name="Basic_Security" doc:id="ebededd1-ceb2-47e3-971e-f84030eef694" >
+		<http:basic-security-filter doc:name="Basic security filter" doc:id="cb95b5c2-a172-4cf8-aa01-4d3557b49212" realm="mule" />
+		<spring:authorization-filter doc:name="Authorization filter" doc:id="e5fc8a73-8fc5-4f03-8683-38622f3808bb" requiredAuthorities="ROLE_ADMIN" />
+		<logger level="INFO" doc:name="Logger" doc:id="90215496-6587-4bb4-a4af-80b68882c497" message="Basic Authentication Successful" />
+	</sub-flow>
+</mule>

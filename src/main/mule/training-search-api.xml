@@ -124,6 +124,6 @@ output application/json
         </error-handler>
     </flow>
     <flow name="get:\individuals:training-search-api-config">
-		<flow-ref doc:name="Flow Reference" doc:id="53cd960f-835c-4c17-86ac-9d813907b920" name="Security_Sub_Flow"/>
+		<flow-ref doc:name="Main Search Process" doc:id="53cd960f-835c-4c17-86ac-9d813907b920" name="Main_Search_Process"/>
     </flow>
 </mule>
