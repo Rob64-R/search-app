@@ -1,0 +1,18 @@
+#%RAML 1.0 Trait
+queryParameters:
+  page_number?:
+    description: Specifies the page number of the returned results.
+    default: 1
+    example: 1
+    type: number
+    minimum: 1
+    format: int
+  results_number?:
+    description: Specifies the number of results returned per page.
+    default: 50
+    example: 30
+    type: number
+    minimum: 10
+    maximum: 200
+    multipleOf: 10
+    format: int

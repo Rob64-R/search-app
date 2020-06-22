@@ -1,0 +1,76 @@
+#%RAML 1.0
+title: search-api
+description: This API allows the user to search for a certain client from a DB depending on the filters provided to the API by the user.
+mediaType:
+  - application/json
+version: 1.0.0
+protocols:
+  - HTTP
+
+securitySchemes:
+  Basic: !include Security/BasicAuth.raml
+
+types:
+  state: !include Datatypes/state.raml
+
+traits:
+  paged: !include Traits/paged.raml
+
+/individuals:
+  is:
+    paged
+  securedBy:
+    Basic
+  get:
+    displayName: Individuals
+    description: This resource is used to search for a specific individual or individuals that match the query parameters provided.
+    queryParameters:
+      firstNm?:
+        description: Used to search for an individual, filtering by first name.
+        example: John
+        type: string
+      lastNm?:
+        description: Used to search for an individual, filtering by last name.
+        example: Example
+        type: string
+      state?:
+        description: State parameter must be written with the abbreviation for the corresponding state.
+        type: state
+        example: IA
+      postlCd?:
+        description: Used to search for an individual, filtering by last name. Must have an a valid zip code pattern.
+        example: "12345"
+        type: string
+        pattern: "[0-9]{5}(-)?([0-9]{4})?"
+      city?:
+        description: Used to search for an individual, filtering by city.
+        example: Idaho
+        type: string
+      midNm?:
+        description: Used to search for an individual, filtering by middle name, if an individual has one.
+        example: Bob
+        type: string
+      search_key:
+        description: User must pick one the parameters to base the search on one of them.
+        default: lastNm
+        enum:
+          - state
+          - postlCd
+          - city
+          - firstNm
+          - lastNm
+        example: lastNm
+        type: string
+      search_value?:
+        description: This query parameter complements the 'search_key' parameter to specify the value of the category by which the search will take effect.
+        example: Smith
+        type: string
+    responses:
+      "200":
+        description: Corresponds to a successful call to the API.
+        body:
+          example: !include Examples/individual_example.raml
+            
+      "404":
+        description: Describes that the item or resource was could not be found
+securedBy: []

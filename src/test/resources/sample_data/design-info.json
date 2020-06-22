@@ -1,0 +1,15 @@
+{
+  "sampleData": {
+    "2ee1b0fd-25fc-4fe2-b513-61560cf6e23a": {
+      "payload": "sample_data/list_json.json",
+      "vars-search_key": "sample_data/defaultstringtype.dwl",
+      "vars-search_value": "sample_data/defaultstringtype_1.dwl"
+    },
+    "4d882877-bb07-4e60-94bc-72e8cfbf6863": {
+      "vars-qP": "sample_data/object.dwl"
+    },
+    "516a11e5-77a3-4ee5-be65-786274227104": {
+      "payload": "sample_data/unknown.dwl"
+    }
+  }
+}

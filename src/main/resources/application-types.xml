@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="individualXML" format="xml">
+      <types:example format="xml" element="IAPDIndividualReport" location="examples/resultFile.xml"/>
+    </types:type>
+    <types:type name="individualJSON" format="json">
+      <types:shape format="weave" example="examples/indvlJSON-1.json"><![CDATA[%dw 2.0
+
+type individualJSON = {|
+  Indvl: {|
+    Info: {|
+      "-lastNm": String, 
+      "-firstNm": String, 
+      "-midNm": String, 
+      "-indvlPK": String, 
+      "-actvAGReg": String, 
+      "-link": String
+    |}, 
+    OthrNms: {|
+      OthrNm: Array<{|        "-lastNm": String,         "-firstNm": String,         "-midNm": String,         "-sufNm": String      |}>
+    |}, 
+    CrntEmps: {|
+      CrntEmp: {|
+        "-orgNm": String, 
+        "-orgPK": String, 
+        "-str1": String, 
+        "-city": String, 
+        "-state": String, 
+        "-cntry": String, 
+        "-postlCd": String, 
+        CrntRgstns: {|
+          CrntRgstn: {|
+            "-regAuth": String, 
+            "-regCat": String, 
+            "-st": String, 
+            "-stDt": String
+          |}
+        |}, 
+        BrnchOfLocs: {|
+          BrnchOfLoc: Array<{|            "-str1": String,             "-city": String,             "-state": String,             "-cntry": String,             "-postlCd": String          |}>
+        |}
+      |}
+    |}, 
+    Exms: {|
+      Exm: Array<{|        "-exmCd": String,         "-exmNm": String,         "-exmDt": String      |}>
+    |}, 
+    EmpHss: {|
+      EmpHs: {|
+        "-fromDt": String, 
+        "-orgNm": String, 
+        "-city": String, 
+        "-state": String
+      |}
+    |}, 
+    DRPs: {|
+      DRP: {|
+        "-hasRegAction": String, 
+        "-hasCriminal": String, 
+        "-hasBankrupt": String, 
+        "-hasCivilJudc": String, 
+        "-hasBond": String, 
+        "-hasJudgment": String, 
+        "-hasInvstgn": String, 
+        "-hasCustComp": String, 
+        "-hasTermination": String
+      |}
+    |}
+  |}
+|} {"example": "{\\\"Indvl\\\":{\\\"Info\\\":{\\\"-lastNm\\\":\\\"FARMER\\\",\\\"-firstNm\\\":\\\"HENRY\\\",\\\"-midNm\\\":\\\"LOUIS\\\",\\\"-indvlPK\\\":\\\"2185666\\\",\\\"-actvAGReg\\\":\\\"Y\\\",\\\"-link\\\":\\\"http:\\/\\/www.adviserinfo.sec.gov\\/IAPD\\/Individual\\/2185666\\\"},\\\"OthrNms\\\":{\\\"OthrNm\\\":[{\\\"-lastNm\\\":\\\"FARMER\\\",\\\"-firstNm\\\":\\\"CHIP\\\"},{\\\"-lastNm\\\":\\\"FARMER\\\",\\\"-firstNm\\\":\\\"HENRY\\\",\\\"-midNm\\\":\\\"LOUIS\\\",\\\"-sufNm\\\":\\\"IV\\\"}]},\\\"CrntEmps\\\":{\\\"CrntEmp\\\":{\\\"-orgNm\\\":\\\"CHARLES SCHWAB & CO., INC.\\\",\\\"-orgPK\\\":\\\"5393\\\",\\\"-str1\\\":\\\"211 MAIN STREET\\\",\\\"-city\\\":\\\"SAN FRANCISCO\\\",\\\"-state\\\":\\\"CA\\\",\\\"-cntry\\\":\\\"United States\\\",\\\"-postlCd\\\":\\\"94105\\\",\\\"CrntRgstns\\\":{\\\"CrntRgstn\\\":{\\\"-regAuth\\\":\\\"NJ\\\",\\\"-regCat\\\":\\\"RA\\\",\\\"-st\\\":\\\"APPROVED\\\",\\\"-stDt\\\":\\\"2006-10-30\\\"}},\\\"BrnchOfLocs\\\":{\\\"BrnchOfLoc\\\":[{\\\"-str1\\\":\\\"525 Washington Blvd\\\",\\\"-city\\\":\\\"Jersey City\\\",\\\"-state\\\":\\\"NJ\\\",\\\"-cntry\\\":\\\"United States\\\",\\\"-postlCd\\\":\\\"07310\\\"},{\\\"-str1\\\":\\\"9825 Schwab Way\\\",\\\"-city\\\":\\\"Lone Tree\\\",\\\"-state\\\":\\\"CO\\\",\\\"-cntry\\\":\\\"United States\\\",\\\"-postlCd\\\":\\\"80124\\\"}]}}},\\\"Exms\\\":{\\\"Exm\\\":[{\\\"-exmCd\\\":\\\"S63\\\",\\\"-exmNm\\\":\\\"Uniform Securities Agent State Law Examination\\\",\\\"-exmDt\\\":\\\"1997-01-14\\\"},{\\\"-exmCd\\\":\\\"S66\\\",\\\"-exmNm\\\":\\\"Uniform Combined State Law Examination\\\",\\\"-exmDt\\\":\\\"2006-01-12\\\"}]},\\\"EmpHss\\\":{\\\"EmpHs\\\":{\\\"-fromDt\\\":\\\"08\\/1995\\\",\\\"-orgNm\\\":\\\"CHARLES SCHWAB & CO., INC.\\\",\\\"-city\\\":\\\"JERSEY CITY\\\",\\\"-state\\\":\\\"NJ\\\"}},\\\"DRPs\\\":{\\\"DRP\\\":{\\\"-hasRegAction\\\":\\\"N\\\",\\\"-hasCriminal\\\":\\\"N\\\",\\\"-hasBankrupt\\\":\\\"N\\\",\\\"-hasCivilJudc\\\":\\\"N\\\",\\\"-hasBond\\\":\\\"N\\\",\\\"-hasJudgment\\\":\\\"N\\\",\\\"-hasInvstgn\\\":\\\"N\\\",\\\"-hasCustComp\\\":\\\"Y\\\",\\\"-hasTermination\\\":\\\"N\\\"}}}}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="trIndividualJSON" format="json">
+      <types:shape format="weave" example="examples/transformedInd.json"><![CDATA[%dw 2.0
+
+type trIndividualJSON = {|
+  Indvl: {|
+    Info: {|
+      lastNm: String, 
+      firstNm: String, 
+      midNm: String, 
+      sufNM: String, 
+      city: String, 
+      state: String, 
+      postlCd: String
+    |}, 
+    OthrNms: {|
+      OthrNm: Array<{|        lastNm: String,         firstNm: String,         midNm: String,         sufNm: String      |}>
+    |}
+  |}
+|} {"example": "{\\\"Indvl\\\":{\\\"Info\\\":{\\\"lastNm\\\":\\\"RAMIREZ\\\",\\\"firstNm\\\":\\\"FRANCISCO\\\",\\\"midNm\\\":\\\"ALARCON\\\",\\\"sufNM\\\":\\\"III\\\",\\\"city\\\":\\\"NEW YORK\\\",\\\"state\\\":\\\"NY\\\",\\\"postlCd\\\":\\\"10172\\\"},\\\"OthrNms\\\":{\\\"OthrNm\\\":[{\\\"lastNm\\\":\\\"RAMIREZ\\\",\\\"firstNm\\\":\\\"FRANK\\\",\\\"midNm\\\":\\\"A\\\",\\\"sufNm\\\":\\\"\\\"},{\\\"lastNm\\\":\\\"RAMIREZ\\\",\\\"firstNm\\\":\\\"FRANCISCO\\\",\\\"midNm\\\":\\\"ALARCON\\\",\\\"sufNm\\\":\\\"III\\\"},{\\\"lastNm\\\":\\\"RAMIREZ III\\\",\\\"firstNm\\\":\\\"FRANCISCO\\\",\\\"midNm\\\":\\\"A\\\",\\\"sufNm\\\":\\\"\\\"}]}}}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="search_key" format="java">
+      <types:shape format="raml"><![CDATA[#%RAML 1.0 DataType
+type: string]]></types:shape>
+    </types:type>
+    <types:type name="search_value" format="java">
+      <types:shape format="raml"><![CDATA[#%RAML 1.0 DataType
+type: string]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#2e126fb4-be3b-4cd0-8b99-3db1b83d6c4d">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="individualXML"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#55e8887a-1f77-4055-9cec-3b5d17234c45">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="individualXML"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="trIndividualJSON"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#2ee1b0fd-25fc-4fe2-b513-61560cf6e23a">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="trIndividualJSON[]"/>
+        </types:message>
+      </types:input-event>
+      <types:output-event>
+        <types:message>
+          <types:payload type="trIndividualJSON[]"/>
+        </types:message>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#a6d8ac37-9262-4cd4-863b-46f8689072cd"/>
+  <types:enrichment select="#0a0a0980-9181-481a-a6e0-51d7dc83b464">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:variables>
+          <types:variable name="search_value" type="search_value"/>
+          <types:variable name="search_key" type="search_key"/>
+        </types:variables>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#4d882877-bb07-4e60-94bc-72e8cfbf6863">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="search_key"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#e8dcece0-8ed1-4216-b0e4-c3c1b5711dc4">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="trIndividualJSON"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#4023d529-8921-4321-a660-9839834f6d4a">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="trIndividualJSON"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+  <types:enrichment select="#516a11e5-77a3-4ee5-be65-786274227104">
+    <types:processor-declaration>
+      <types:input-event>
+        <types:message>
+          <types:payload type="trIndividualJSON"/>
+        </types:message>
+      </types:input-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

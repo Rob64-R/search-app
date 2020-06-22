@@ -1,0 +1,11 @@
+#%RAML 1.0 SecurityScheme
+  type: Basic Authentication
+  description: This Basic Authentication Security Scheme requires a username and matching password for a client to make use of the API.
+  describedBy:
+    responses:
+      "200":
+        description: Returns a successful response after receiving a matching username and password.
+      "400":
+        description: Returns a Bad Request after not receiving matching parameters.
+      "401":
+        description: Returns Unauthorized after receiving required parameters that do not match a stored username and password.
