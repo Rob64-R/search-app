@@ -53,7 +53,7 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 	<sub-flow name="Check_Cache" doc:id="4a7d867c-71ba-4308-ae81-7a1640db00d1" >
 		<choice doc:name="Choice" doc:id="1e2cc419-e683-43c7-90ef-36340be5af66" >
 			<when expression='#[payload startsWith vars.OSkey]' >
-				<os:retrieve doc:name="Retrieve" doc:id="d49dd6bc-771d-4841-a0b5-f56c148018f1" key="#[vars.OSkey]" objectStore="Object_store" />
+				<os:retrieve doc:name="Retrieve last search" doc:id="d49dd6bc-771d-4841-a0b5-f56c148018f1" key="#[vars.OSkey]" objectStore="Object_store" />
 				<ee:transform doc:name="Transform to JSON" doc:id="5ed6b814-3e16-4aad-8650-c646e17fd056" >
 					<ee:message >
 						<ee:set-payload ><![CDATA[%dw 2.0
@@ -70,12 +70,25 @@ payload]]></ee:set-payload>
 						<ee:set-payload resource="C:\Users\Administrator\AnypointStudio\studio-workspace\training-search-api-TESTING\src\main\resources\dataweave\transform_Indivs.dwl" />
 			</ee:message>
 		</ee:transform>
-				<ee:transform doc:name="First Filter" doc:id="2ee1b0fd-25fc-4fe2-b513-61560cf6e23a">
-			<ee:message>
-				<ee:set-payload resource="C:\Users\Administrator\AnypointStudio\studio-workspace\training-search-api-TESTING\src\main\resources\dataweave\filter_indivs.dwl" />
-			</ee:message>
-		</ee:transform>
-				<os:store doc:name="Store individuals in cache" doc:id="4cab0187-c324-474c-8be2-73df9d122b3b" key="#[vars.OSkey]" objectStore="Object_store" />
+				<os:store doc:name="Store individuals in cache" doc:id="66635fd0-f30a-47a4-bd5f-b612ce1c384a" key="#[vars.OSkey]" objectStore="Object_store" />
+				<foreach doc:name="Check all queries" doc:id="4071e1ec-2748-46a6-9570-f6d58cb6fdc0" collection='#[vars.qParams -"results_number" -"page_number"]'>
+					<set-variable value="#[payload]" doc:name="Current query" doc:id="c8863daf-af9f-45e8-af36-0089e6e1c2b0" variableName="current_query" />
+					<logger level="INFO" doc:name="Logger" doc:id="5318f8ca-4ce2-4421-8172-82542f135ffa" message="#[vars.current_query]" />
+					<os:retrieve doc:name="Retrieve past result from cache" doc:id="c516e41a-da97-4f79-92d5-d7fe8d55d9d1" key="#[vars.OSkey]" objectStore="Object_store">
+						<os:default-value ><![CDATA[payload]]></os:default-value>
+					</os:retrieve>
+					<ee:transform doc:name="Filter results" doc:id="ebb2a566-309d-4217-9330-033430e408d2" >
+						<ee:message >
+							<ee:set-payload ><![CDATA[output application/json
+---
+
+{
+	results: (payload filter ($.Indvl.Info[write(vars.current_query pluck $$)] == upper(write(vars.current_query))))
+}]]></ee:set-payload>
+						</ee:message>
+					</ee:transform>
+					<os:store doc:name="Store results in cache" doc:id="4cab0187-c324-474c-8be2-73df9d122b3b" key="#[vars.OSkey]" objectStore="Object_store" />
+				</foreach>
 				<logger level="INFO" doc:name="Logger" doc:id="97b9d8e2-502f-4106-87ef-8dc288392d72" message="#[vars.OSkey]"/>
 			</otherwise>
 		</choice>

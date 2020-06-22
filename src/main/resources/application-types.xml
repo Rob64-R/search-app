@@ -125,20 +125,6 @@ type: string]]></types:shape>
       </types:output-event>
     </types:processor-declaration>
   </types:enrichment>
-  <types:enrichment select="#2ee1b0fd-25fc-4fe2-b513-61560cf6e23a">
-    <types:processor-declaration>
-      <types:input-event>
-        <types:message>
-          <types:payload type="trIndividualJSON[]"/>
-        </types:message>
-      </types:input-event>
-      <types:output-event>
-        <types:message>
-          <types:payload type="trIndividualJSON[]"/>
-        </types:message>
-      </types:output-event>
-    </types:processor-declaration>
-  </types:enrichment>
   <types:enrichment select="#a6d8ac37-9262-4cd4-863b-46f8689072cd"/>
   <types:enrichment select="#0a0a0980-9181-481a-a6e0-51d7dc83b464">
     <types:processor-declaration>
