@@ -33,7 +33,7 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 		</choice>
 	</sub-flow>
 	<sub-flow name="Variable_Storage" doc:id="c3f09d86-be90-495e-ae3c-6d03f4717a1b">
-		<set-variable value="#[attributes.queryParams]" doc:name="qParams" doc:id="8f4d0bec-f430-4389-b7ec-18acdd8b7f5f" variableName="qParams" />
+		<set-variable value='#[attributes.queryParams -"results_number" -"page_number"]' doc:name="qParams" doc:id="8f4d0bec-f430-4389-b7ec-18acdd8b7f5f" variableName="qParams" />
 		<set-variable value='#[attributes.queryString default ""]' doc:name="OSkey" doc:id="7f9106fd-d9bc-4ea5-b08e-240d598ce388" variableName="OSkey" />
 		<os:contains doc:name="Check Cache for qString" doc:id="877ac36f-47e2-4875-8e6e-5cd5bc73b055" key="qString" objectStore="Object_store" target="contains_qString" />
 		<choice doc:name="Choice" doc:id="42b4eca4-05da-4862-83fd-8c1a752fbee8" >
@@ -54,7 +54,7 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 		<choice doc:name="Choice" doc:id="1e2cc419-e683-43c7-90ef-36340be5af66" >
 			<when expression='#[payload startsWith vars.OSkey]' >
 				<os:retrieve doc:name="Retrieve last search" doc:id="d49dd6bc-771d-4841-a0b5-f56c148018f1" key="#[vars.OSkey]" objectStore="Object_store" />
-				<ee:transform doc:name="Transform to JSON" doc:id="5ed6b814-3e16-4aad-8650-c646e17fd056" >
+				<ee:transform doc:name="Copy_of_Transform to JSON" doc:id="1dbde794-cf74-47d6-84c9-8f9515c48b6e" >
 					<ee:message >
 						<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
@@ -70,26 +70,46 @@ payload]]></ee:set-payload>
 						<ee:set-payload resource="C:\Users\Administrator\AnypointStudio\studio-workspace\training-search-api-TESTING\src\main\resources\dataweave\transform_Indivs.dwl" />
 			</ee:message>
 		</ee:transform>
+				<ee:transform doc:name="First Filter" doc:id="2cf9f658-f949-4bcc-b74b-4b9d73a33748">
+					<ee:message>
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+
+(payload filter ($.Indvl.Info[vars.qParams.search_key] contains upper(vars.qParams.search_value))) orderBy ($.Indvl.Info.lastNm)]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
 				<os:store doc:name="Store individuals in cache" doc:id="66635fd0-f30a-47a4-bd5f-b612ce1c384a" key="#[vars.OSkey]" objectStore="Object_store" />
-				<foreach doc:name="Check all queries" doc:id="4071e1ec-2748-46a6-9570-f6d58cb6fdc0" collection='#[vars.qParams -"results_number" -"page_number"]'>
+				<set-variable value="#[payload]" doc:name="result" doc:id="accbab87-565c-4fa1-81c5-fa9698051576" variableName="result"/>
+				<foreach doc:name="Check all queries" doc:id="4071e1ec-2748-46a6-9570-f6d58cb6fdc0" collection='#[vars.qParams -"search_key" -"search_value"]'>
 					<set-variable value="#[payload]" doc:name="Current query" doc:id="c8863daf-af9f-45e8-af36-0089e6e1c2b0" variableName="current_query" />
-					<logger level="INFO" doc:name="Logger" doc:id="5318f8ca-4ce2-4421-8172-82542f135ffa" message="#[vars.current_query]" />
 					<os:retrieve doc:name="Retrieve past result from cache" doc:id="c516e41a-da97-4f79-92d5-d7fe8d55d9d1" key="#[vars.OSkey]" objectStore="Object_store">
 						<os:default-value ><![CDATA[payload]]></os:default-value>
 					</os:retrieve>
 					<ee:transform doc:name="Filter results" doc:id="ebb2a566-309d-4217-9330-033430e408d2" >
 						<ee:message >
-							<ee:set-payload ><![CDATA[output application/json
----
-
-{
-	results: (payload filter ($.Indvl.Info[write(vars.current_query pluck $$)] == upper(write(vars.current_query))))
-}]]></ee:set-payload>
 						</ee:message>
+						<ee:variables >
+							<ee:set-variable variableName="result" ><![CDATA[output application/json
+var princ = vars.current_query mapObject ()->{i: $$, val: $ }
+---
+payload filter ($.Indvl.Info[princ.i] == upper(princ.val))
+]]></ee:set-variable>
+						</ee:variables>
 					</ee:transform>
 					<os:store doc:name="Store results in cache" doc:id="4cab0187-c324-474c-8be2-73df9d122b3b" key="#[vars.OSkey]" objectStore="Object_store" />
 				</foreach>
-				<logger level="INFO" doc:name="Logger" doc:id="97b9d8e2-502f-4106-87ef-8dc288392d72" message="#[vars.OSkey]"/>
+				<os:store doc:name="Store final result" doc:id="6ee60635-8c46-4e42-8d21-81fecfec534e" key="#[vars.OSkey]" objectStore="Object_store">
+					<os:value><![CDATA[#[vars.result]]]></os:value>
+				</os:store>
+				<ee:transform doc:name="Transform to JSON" doc:id="5ed6b814-3e16-4aad-8650-c646e17fd056">
+					<ee:message>
+						<ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+vars.result]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
 			</otherwise>
 		</choice>
 	</sub-flow>
