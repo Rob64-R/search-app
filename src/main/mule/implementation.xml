@@ -57,8 +57,7 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 		<os:store doc:name="Store individuals in cache" doc:id="66635fd0-f30a-47a4-bd5f-b612ce1c384a" key="#[vars.OSkey]" objectStore="Object_store" />
 		<set-variable value="#[payload]" doc:name="result" doc:id="accbab87-565c-4fa1-81c5-fa9698051576" variableName="result" />
 		<foreach doc:name="Check all queries" doc:id="4071e1ec-2748-46a6-9570-f6d58cb6fdc0" collection='#[vars.qParams -"search_key" -"search_value"]'>
-					<set-variable value="#[payload]" doc:name="Current query" doc:id="c8863daf-af9f-45e8-af36-0089e6e1c2b0" variableName="current_query" />
-					<ee:transform doc:name="Filter results" doc:id="ebb2a566-309d-4217-9330-033430e408d2">
+			<ee:transform doc:name="Filter results" doc:id="ebb2a566-309d-4217-9330-033430e408d2">
 						<ee:message>
 						</ee:message>
 						<ee:variables>
