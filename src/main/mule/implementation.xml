@@ -29,12 +29,13 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 			</when>
 			<otherwise>
 				<os:store doc:name="Store qString" doc:id="8a50558b-8fbd-49b2-823b-ea3ac49382f0" key="qString" objectStore="Object_store">
-					<os:value><![CDATA[#[attributes.queryString]]]></os:value>
+					<os:value><![CDATA[#[vars.OSkey]]]></os:value>
 				</os:store>
 			</otherwise>
 		</choice>
+		<logger level="INFO" doc:name="Logger" doc:id="2c282316-25c1-429a-9240-4b72f8545a7f" message="#[[payload, vars.OSkey]]"/>
 		<choice doc:name="Choice" doc:id="1e2cc419-e683-43c7-90ef-36340be5af66">
-			<when expression="#[payload startsWith vars.OSkey]">
+			<when expression="#[payload == vars.OSkey]">
 				<flow-ref doc:name="Return_Last_Search" doc:id="81e7e1d9-872c-4e48-9bd4-57ff63890fb6" name="Return_Last_Search"/>
 			</when>
 			<otherwise>
@@ -99,8 +100,9 @@ payload]]></ee:set-payload>
 		</choice>
 	</sub-flow>
 	<sub-flow name="Variable_Storage" doc:id="c3f09d86-be90-495e-ae3c-6d03f4717a1b">
+		<logger level="INFO" doc:name="Logger" doc:id="0c05b81d-f422-4b19-b3e2-1a68a842c07e" message="#[attributes.queryParams]"/>
 		<set-variable value='#[attributes.queryParams -"results_number" -"page_number"]' doc:name="qParams" doc:id="8f4d0bec-f430-4389-b7ec-18acdd8b7f5f" variableName="qParams" />
-		<set-variable value='#[attributes.queryString default ""]' doc:name="OSkey" doc:id="7f9106fd-d9bc-4ea5-b08e-240d598ce388" variableName="OSkey" />
+		<set-variable value='#[(attributes.queryParams pluck ($ as String) orderBy $) reduce ($$ ++ $)]' doc:name="OSkey" doc:id="7f9106fd-d9bc-4ea5-b08e-240d598ce388" variableName="OSkey" />
 	</sub-flow>
 
 </mule>
