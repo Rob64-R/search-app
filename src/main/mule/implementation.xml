@@ -22,28 +22,22 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 		<flow-ref doc:name="Variable_Storage" doc:id="815563d0-95b8-4a16-9aff-3f49b3697aea" name="Variable_Storage" />
 		<os:contains doc:name="Check Cache for qString" doc:id="877ac36f-47e2-4875-8e6e-5cd5bc73b055" key="qString" objectStore="Object_store" target="contains_qString" />
 		<choice doc:name="Choice" doc:id="42b4eca4-05da-4862-83fd-8c1a752fbee8">
-			<when expression="#[vars.contains_qString]">
+			<when expression="#[(vars.contains_qString)]">
 				<os:retrieve doc:name="Retrieve qString" doc:id="1b12eeed-21d3-46bb-8a9c-cf6e75ab59d5" key="qString" objectStore="Object_store">
 					<os:default-value><![CDATA[payload]]></os:default-value>
 				</os:retrieve>
+				<flow-ref doc:name="Return_Last_Search" doc:id="81e7e1d9-872c-4e48-9bd4-57ff63890fb6" name="Return_Last_Search" />
 			</when>
 			<otherwise>
 				<os:store doc:name="Store qString" doc:id="8a50558b-8fbd-49b2-823b-ea3ac49382f0" key="qString" objectStore="Object_store">
 					<os:value><![CDATA[#[vars.OSkey]]]></os:value>
 				</os:store>
-			</otherwise>
-		</choice>
-		<logger level="INFO" doc:name="Logger" doc:id="2c282316-25c1-429a-9240-4b72f8545a7f" message="#[[payload, vars.OSkey]]"/>
-		<choice doc:name="Choice" doc:id="1e2cc419-e683-43c7-90ef-36340be5af66">
-			<when expression="#[payload == vars.OSkey]">
-				<flow-ref doc:name="Return_Last_Search" doc:id="81e7e1d9-872c-4e48-9bd4-57ff63890fb6" name="Return_Last_Search"/>
-			</when>
-			<otherwise>
 				<flow-ref doc:name="Filtering" doc:id="b0c38092-c980-4ee3-89d3-35ad7afa45e3" name="Filtering" />
 			</otherwise>
 		</choice>
 	</sub-flow>
 	<sub-flow name="Filtering" doc:id="4a7d867c-71ba-4308-ae81-7a1640db00d1">
+		<logger level="INFO" doc:name="Logger" doc:id="b1a3675a-cad0-4106-a2d5-89f1b7c4a4e6" message="filtering"/>
 		<file:read doc:name="Read Original File" doc:id="51391040-48b9-437f-94c8-e6bc8b42d806" config-ref="File_Config" path="${file.path}" />
 		<ee:transform doc:name="Transform Individuals" doc:id="55e8887a-1f77-4055-9cec-3b5d17234c45">
 			<ee:message>
@@ -79,8 +73,10 @@ vars.result]]></ee:set-payload>
 				</ee:transform>
 	</sub-flow>
 	<sub-flow name="Return_Last_Search" doc:id="53c03db5-8ead-4a0f-8aa9-724819f73172">
-		<os:retrieve doc:name="Retrieve last search" doc:id="d49dd6bc-771d-4841-a0b5-f56c148018f1" key="#[vars.OSkey]" objectStore="Object_store" />
-		<ee:transform doc:name="Transform to JSON" doc:id="1dbde794-cf74-47d6-84c9-8f9515c48b6e">
+		<choice doc:name="Choice" doc:id="a0b3d75a-117e-4e6e-b02f-4c0dbc3deb9e">
+			<when expression="#[(vars.OSkey endsWith payload)]">
+				<os:retrieve doc:name="Retrieve last search" doc:id="d49dd6bc-771d-4841-a0b5-f56c148018f1" objectStore="Object_store" key="#[vars.OSkey]"/>
+				<ee:transform doc:name="Transform to JSON" doc:id="1dbde794-cf74-47d6-84c9-8f9515c48b6e">
 					<ee:message>
 						<ee:set-payload><![CDATA[%dw 2.0
 output application/json
@@ -88,6 +84,11 @@ output application/json
 payload]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>
+			</when>
+			<otherwise>
+				<logger level="INFO" doc:name="Logger" doc:id="5f1258b3-518a-4c79-9b0f-9eb343a4fb30" message="in cache" />
+			</otherwise>
+		</choice>
 	</sub-flow>
 	<sub-flow name="Validate_Queries" doc:id="807e11e7-34d7-439b-9f88-87df451e88c5">
 		<choice doc:name="Choice" doc:id="3d02e061-51d3-4468-ad36-b8021732c1a0">
@@ -100,9 +101,13 @@ payload]]></ee:set-payload>
 		</choice>
 	</sub-flow>
 	<sub-flow name="Variable_Storage" doc:id="c3f09d86-be90-495e-ae3c-6d03f4717a1b">
-		<logger level="INFO" doc:name="Logger" doc:id="0c05b81d-f422-4b19-b3e2-1a68a842c07e" message="#[attributes.queryParams]"/>
 		<set-variable value='#[attributes.queryParams -"results_number" -"page_number"]' doc:name="qParams" doc:id="8f4d0bec-f430-4389-b7ec-18acdd8b7f5f" variableName="qParams" />
-		<set-variable value='#[(attributes.queryParams pluck ($ as String) orderBy $) reduce ($$ ++ $)]' doc:name="OSkey" doc:id="7f9106fd-d9bc-4ea5-b08e-240d598ce388" variableName="OSkey" />
+		<set-variable doc:name="OSkey" doc:id="7f9106fd-d9bc-4ea5-b08e-240d598ce388" variableName="OSkey" value="#[(vars.qParams pluck ($ as String)) reduce ($$ ++ $)]"/>
+		<logger level="INFO" doc:name="Logger" doc:id="d1a2b1dd-56b4-4318-a4d4-1e04a10bdb40" message="#[{
+	qpar: attributes.queryParams,
+	qparamsVar: vars.qParams,
+	oskey: vars.OSkey
+}]"/>
 	</sub-flow>
 
 </mule>
