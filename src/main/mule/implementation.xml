@@ -26,17 +26,20 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 				<os:retrieve doc:name="Retrieve qString" doc:id="1b12eeed-21d3-46bb-8a9c-cf6e75ab59d5" key="qString" objectStore="Object_store">
 					<os:default-value><![CDATA[payload]]></os:default-value>
 				</os:retrieve>
+				<logger level="INFO" doc:name="Logger" doc:id="9c7d2f14-4b5d-4029-9648-611fa240df32" message="#[{payload: payload,
+	oskey: vars.OSkey
+}]" />
 				<flow-ref doc:name="Return_Last_Search" doc:id="81e7e1d9-872c-4e48-9bd4-57ff63890fb6" name="Return_Last_Search" />
 			</when>
 			<otherwise>
 				<os:store doc:name="Store qString" doc:id="8a50558b-8fbd-49b2-823b-ea3ac49382f0" key="qString" objectStore="Object_store">
 					<os:value><![CDATA[#[vars.OSkey]]]></os:value>
 				</os:store>
-				<flow-ref doc:name="Filtering" doc:id="b0c38092-c980-4ee3-89d3-35ad7afa45e3" name="Filtering" />
+				<flow-ref doc:name="Read_File" doc:id="2614e4bf-8cf2-4ce8-ac60-7b3e1cd64d1d" name="Read_File"/>
 			</otherwise>
 		</choice>
 	</sub-flow>
-	<sub-flow name="Filtering" doc:id="4a7d867c-71ba-4308-ae81-7a1640db00d1">
+	<sub-flow name="Read_File" doc:id="4a7d867c-71ba-4308-ae81-7a1640db00d1">
 		<logger level="INFO" doc:name="Logger" doc:id="b1a3675a-cad0-4106-a2d5-89f1b7c4a4e6" message="filtering"/>
 		<file:read doc:name="Read Original File" doc:id="51391040-48b9-437f-94c8-e6bc8b42d806" config-ref="File_Config" path="${file.path}" />
 		<ee:transform doc:name="Transform Individuals" doc:id="55e8887a-1f77-4055-9cec-3b5d17234c45">
@@ -49,6 +52,9 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 				<ee:set-payload resource="C:\Users\Administrator\AnypointStudio\studio-workspace\training-search-api-TESTING\src\main\resources\dataweave\filter_indivs.dwl" />
 					</ee:message>
 				</ee:transform>
+		<flow-ref doc:name="Filtering" doc:id="b0c38092-c980-4ee3-89d3-35ad7afa45e3" name="Filtering" />
+	</sub-flow>
+	<sub-flow name="Filtering" doc:id="115897d7-6e6a-45dc-943c-13c5256ba666" >
 		<os:store doc:name="Store individuals in cache" doc:id="66635fd0-f30a-47a4-bd5f-b612ce1c384a" key="#[vars.OSkey]" objectStore="Object_store" />
 		<set-variable value="#[payload]" doc:name="result" doc:id="accbab87-565c-4fa1-81c5-fa9698051576" variableName="result" />
 		<foreach doc:name="Check all queries" doc:id="4071e1ec-2748-46a6-9570-f6d58cb6fdc0" collection='#[vars.qParams -"search_key" -"search_value"]'>
@@ -74,8 +80,8 @@ vars.result]]></ee:set-payload>
 	</sub-flow>
 	<sub-flow name="Return_Last_Search" doc:id="53c03db5-8ead-4a0f-8aa9-724819f73172">
 		<choice doc:name="Choice" doc:id="a0b3d75a-117e-4e6e-b02f-4c0dbc3deb9e">
-			<when expression="#[(vars.OSkey endsWith payload)]">
-				<os:retrieve doc:name="Retrieve last search" doc:id="d49dd6bc-771d-4841-a0b5-f56c148018f1" objectStore="Object_store" key="#[vars.OSkey]"/>
+			<when expression="#[vars.OSkey == payload]">
+				<os:retrieve doc:name="Retrieve last search" doc:id="31ba97ca-41ad-406a-ae1c-f54002cdfd1e" key="#[payload]" objectStore="Object_store" />
 				<ee:transform doc:name="Transform to JSON" doc:id="1dbde794-cf74-47d6-84c9-8f9515c48b6e">
 					<ee:message>
 						<ee:set-payload><![CDATA[%dw 2.0
@@ -85,8 +91,16 @@ payload]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>
 			</when>
+			<when expression="#[(vars.OSkey endsWith payload)]" >
+				<os:retrieve doc:name="Retrieve last search" doc:id="d49dd6bc-771d-4841-a0b5-f56c148018f1" objectStore="Object_store" key="#[payload]" />
+				<os:store doc:name="Store qString" doc:id="7a63484d-eb56-44f5-b0d8-4523b86e1f48" key="qString" objectStore="Object_store">
+					<os:value><![CDATA[#[vars.OSkey]]]></os:value>
+				</os:store>
+				<flow-ref doc:name="Filtering" doc:id="544214a5-6302-410d-8d8c-b5b6f80fca1f" name="Filtering" />
+			</when>
 			<otherwise>
 				<logger level="INFO" doc:name="Logger" doc:id="5f1258b3-518a-4c79-9b0f-9eb343a4fb30" message="in cache" />
+				<flow-ref doc:name="Read File" doc:id="b790683b-e868-49ce-8c85-b5016d2f2dd7" name="Read_File"/>
 			</otherwise>
 		</choice>
 	</sub-flow>
