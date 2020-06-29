@@ -73,8 +73,24 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 					<ee:message>
 						<ee:set-payload><![CDATA[%dw 2.0
 output application/json
+var start = if(vars.pagination.page_number ==  1) 
+				0 
+			else 
+				(vars.pagination.page_number * vars.pagination.results_number)
+var endTemp = start + (vars.pagination.results_number  -1)
+var end = if(endTemp < sizeOf(vars.result))
+				endTemp
+			else
+				sizeOf(vars.result)
 ---
-vars.result]]></ee:set-payload>
+{
+	results: vars.result[start to end],
+	MiscInfo: {
+		page: vars.pagination.page_number,
+		Showing: "" ++ vars.pagination.results_number ++ " of " ++ sizeOf(vars.result) ++ " results"
+	}
+}
+]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>
 	</sub-flow>
@@ -86,8 +102,23 @@ vars.result]]></ee:set-payload>
 					<ee:message>
 						<ee:set-payload><![CDATA[%dw 2.0
 output application/json
+var start = if(vars.pagination.page_number ==  1) 
+				0 
+			else 
+				(vars.pagination.page_number * vars.pagination.results_number)
+var endTemp = start + (vars.pagination.results_number  -1)
+var end = if(endTemp < sizeOf(payload))
+				endTemp
+			else
+				sizeOf(payload)
 ---
-payload]]></ee:set-payload>
+{
+	results: payload[start to end],
+	MiscInfo: {
+		page: vars.pagination.page_number,
+		Showing: "" ++ vars.pagination.results_number ++ " of " ++ sizeOf(payload) ++ " results"
+	}
+}]]></ee:set-payload>
 					</ee:message>
 				</ee:transform>
 			</when>
@@ -116,6 +147,9 @@ payload]]></ee:set-payload>
 	</sub-flow>
 	<sub-flow name="Variable_Storage" doc:id="c3f09d86-be90-495e-ae3c-6d03f4717a1b">
 		<set-variable value='#[attributes.queryParams -"results_number" -"page_number"]' doc:name="qParams" doc:id="8f4d0bec-f430-4389-b7ec-18acdd8b7f5f" variableName="qParams" />
+		<set-variable value="#[{results_number: attributes.queryParams.results_number as Number,
+	page_number: attributes.queryParams.page_number as Number
+}]" doc:name="pagination" doc:id="6996c128-36f4-4a92-94a2-7092e72963e1" variableName="pagination"/>
 		<set-variable doc:name="OSkey" doc:id="7f9106fd-d9bc-4ea5-b08e-240d598ce388" variableName="OSkey" value="#[(vars.qParams pluck ($ as String)) reduce ($$ ++ $)]"/>
 		<logger level="INFO" doc:name="Logger" doc:id="d1a2b1dd-56b4-4318-a4d4-1e04a10bdb40" message="#[{
 	qpar: attributes.queryParams,
