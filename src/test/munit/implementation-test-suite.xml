@@ -9,6 +9,13 @@
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="implementation-test-suite.xml" />
 	<munit:test name="implementation-test-suite-Read_FileTest" doc:id="bd39d59b-fdd7-44ed-ba61-2f750b664919" description="Test">
+		<munit:behavior>
+			<munit:set-event doc:name="Set Event" doc:id="4f336537-4c35-4a9f-9afa-d5adf8dfdb53" >
+				<munit:variables >
+					<munit:variable key="qParams" value="#[MunitTools::getResourceAsStream('sample_data/qParams.json')]" encoding="UTF-8" mediaType="application/json" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
 		<munit:execution >
 			<flow-ref doc:name="Flow-ref to Read_File" doc:id="0bb38b59-7bc9-465d-b9e3-dc55fcbc9fef" name="Read_File"/>
 		</munit:execution>

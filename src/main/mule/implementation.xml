@@ -36,6 +36,7 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 					<os:value><![CDATA[#[vars.OSkey]]]></os:value>
 				</os:store>
 				<flow-ref doc:name="Read_File" doc:id="2614e4bf-8cf2-4ce8-ac60-7b3e1cd64d1d" name="Read_File"/>
+				<flow-ref doc:name="Filtering" doc:id="b0c38092-c980-4ee3-89d3-35ad7afa45e3" name="Filtering" />
 			</otherwise>
 		</choice>
 	</sub-flow>
@@ -52,7 +53,6 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 				<ee:set-payload resource="C:\Users\Administrator\AnypointStudio\studio-workspace\training-search-api-TESTING\src\main\resources\dataweave\filter_indivs.dwl" />
 					</ee:message>
 				</ee:transform>
-		<flow-ref doc:name="Filtering" doc:id="b0c38092-c980-4ee3-89d3-35ad7afa45e3" name="Filtering" />
 	</sub-flow>
 	<sub-flow name="Filtering" doc:id="115897d7-6e6a-45dc-943c-13c5256ba666" >
 		<os:store doc:name="Store individuals in cache" doc:id="66635fd0-f30a-47a4-bd5f-b612ce1c384a" key="#[vars.OSkey]" objectStore="Object_store" />
