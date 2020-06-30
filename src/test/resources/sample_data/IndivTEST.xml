@@ -1,0 +1,567 @@
+<IAPDIndividualReport GenOn="2020-01-24">
+	<Indvls>
+		<Indvl>
+			<Info lastNm="RAMIREZ" firstNm="FRANCISCO" midNm="ALARCON"
+				sufNm="III" indvlPK="2185634" actvAGReg="Y"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185634" />
+			<OthrNms>
+				<OthrNm lastNm="RAMIREZ" firstNm="FRANK" midNm="A" />
+				<OthrNm lastNm="RAMIREZ" firstNm="FRANCISCO" midNm="ALARCON"
+					sufNm="III" />
+				<OthrNm lastNm="RAMIREZ III" firstNm="FRANCISCO" midNm="A" />
+			</OthrNms>
+			<CrntEmps>
+				<CrntEmp orgNm="J.P. MORGAN SECURITIES LLC" orgPK="79"
+					str1="277 PARK AVENUE" city="NEW YORK" state="NY"
+					cntry="United States" postlCd="10172">
+					<CrntRgstns>
+						<CrntRgstn regAuth="TX" regCat="RA" st="APPROVED"
+							stDt="2015-02-09" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="2200 ROSS AVE" str2="FLOOR 10"
+							city="DALLAS" state="TX" cntry="United States" postlCd="75201" />
+						<BrnchOfLoc str1="383 MADISON AVENUE" city="NEW YORK"
+							state="NY" cntry="United States" postlCd="10179" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1994-09-26" />
+				<Exm exmCd="S65"
+					exmNm="Uniform Investment Adviser Law Examination"
+					exmDt="1994-06-15" />
+			</Exms>
+			<Dsgntns />
+			<PrevRgstns>
+				<PrevRgstn orgNm="CREDIT SUISSE SECURITIES (USA) LLC"
+					orgPK="816" regBeginDt="2006-04-27" regEndDt="2014-10-24">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="DALLAS" state="TX" />
+						<BrnchOfLoc city="DALLAS" state="TX" />
+						<BrnchOfLoc city="HOUSTON" state="TX" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+				<PrevRgstn orgNm="J.P. MORGAN SECURITIES INC."
+					orgPK="18718" regBeginDt="2002-03-27" regEndDt="2004-04-06">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="DALLAS" state="TX" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+				<PrevRgstn orgNm="CHASE INVESTMENT SERVICES CORP."
+					orgPK="25574" regBeginDt="2005-02-03" regEndDt="2006-04-28">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="DALLAS" state="TX" />
+						<BrnchOfLoc city="DALLAS" state="TX" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+			</PrevRgstns>
+			<EmpHss>
+				<EmpHs fromDt="04/2006" toDt="10/2014"
+					orgNm="CREDIT SUISSE SECURITIES (USA) LLC" city="DALLAS" state="TX" />
+				<EmpHs fromDt="01/2015" orgNm="JP MORGAN SECURITIES, LLC"
+					city="NEW YORK" state="NY" />
+				<EmpHs fromDt="10/2014" orgNm="JPMORGAN CHASE BANK NA"
+					city="NEW YORK" state="NY" />
+				<EmpHs fromDt="12/2005"
+					orgNm="THE RUNNING SPECIALTY GROUP DBA RUN ON!" city="COPPELL"
+					state="TX" />
+			</EmpHss>
+			<OthrBuss>
+				<OthrBus
+					desc="Entity Name: The Running Specialty Group, LLC dba Run On! Investment related: No  Address: Corporate: 231 Denver, CO www.run.com. Local: 680 Coppell, TX www.runontexas.com  Nature of the other business: Running stores offering shoes, apparel, gear, and training programs  Position/Title/Relationship: Distance training coach  Start Date: 19-Dec-2015  Approximate # of hours a month: 16-26  Approximate # of hours during securities trading hours: 0  Briefly describe your duties: I will be responsible for coaching running workouts for half and full marathon classes." />
+			</OthrBuss>
+			<DRPs />
+		</Indvl>
+		<Indvl>
+			<Info lastNm="HAUGH" firstNm="THOMAS" midNm="PATRICK"
+				indvlPK="2185651" actvAGReg="Y"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185651" />
+			<OthrNms />
+			<CrntEmps>
+				<CrntEmp orgNm="WELLS STREET ADVISORS, LLC" orgPK="166700"
+					str1="411 S. WELLS STREET" str2="SUITE 900" city="CHICAGO"
+					state="IL" cntry="United States" postlCd="60607">
+					<CrntRgstns>
+						<CrntRgstn regAuth="IL" regCat="RA" st="APPROVED"
+							stDt="2019-05-17" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="411 S. WELLS STREET" str2="SUITE 900"
+							city="CHICAGO" state="IL" cntry="United States" postlCd="60607" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1992-01-10" />
+				<Exm exmCd="S65"
+					exmNm="Uniform Investment Adviser Law Examination"
+					exmDt="2019-05-16" />
+			</Exms>
+			<Dsgntns />
+			<PrevRgstns />
+			<EmpHss>
+				<EmpHs fromDt="10/1985"
+					orgNm="PTI SECURITIES &amp; FUTURES L. P." city="CHICAGO"
+					state="IL" />
+				<EmpHs fromDt="01/2019" orgNm="Wells Street Advisors, LLC"
+					city="CHICAGO" state="IL" />
+			</EmpHss>
+			<OthrBuss>
+				<OthrBus
+					desc="HOST A DAILY RADIO SHOW CALLED STOCKS &amp; JOCKS ON 1240 AM FROM 5:00AM - 7:30AM." />
+			</OthrBuss>
+			<DRPs>
+				<DRP hasRegAction="Y" hasCriminal="N" hasBankrupt="N"
+					hasCivilJudc="N" hasBond="N" hasJudgment="N" hasInvstgn="N"
+					hasCustComp="N" hasTermination="N" />
+			</DRPs>
+		</Indvl>
+		<Indvl>
+			<Info lastNm="FARMER" firstNm="HENRY" midNm="LOUIS"
+				indvlPK="2185666" actvAGReg="Y"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185666" />
+			<OthrNms>
+				<OthrNm lastNm="FARMER" firstNm="CHIP" />
+				<OthrNm lastNm="FARMER" firstNm="HENRY" midNm="LOUIS"
+					sufNm="IV" />
+			</OthrNms>
+			<CrntEmps>
+				<CrntEmp orgNm="CHARLES SCHWAB &amp; CO., INC." orgPK="5393"
+					str1="211 MAIN STREET" city="SAN FRANCISCO" state="CA"
+					cntry="United States" postlCd="94105">
+					<CrntRgstns>
+						<CrntRgstn regAuth="NJ" regCat="RA" st="APPROVED"
+							stDt="2006-10-30" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="525 Washington Blvd"
+							city="Jersey City" state="NJ" cntry="United States"
+							postlCd="07310" />
+						<BrnchOfLoc str1="9825 Schwab Way" city="Lone Tree"
+							state="CO" cntry="United States" postlCd="80124" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1997-01-14" />
+				<Exm exmCd="S66" exmNm="Uniform Combined State Law Examination"
+					exmDt="2006-01-12" />
+			</Exms>
+			<Dsgntns />
+			<PrevRgstns />
+			<EmpHss>
+				<EmpHs fromDt="08/1995" orgNm="CHARLES SCHWAB &amp; CO., INC."
+					city="JERSEY CITY" state="NJ" />
+			</EmpHss>
+			<OthrBuss />
+			<DRPs>
+				<DRP hasRegAction="N" hasCriminal="N" hasBankrupt="N"
+					hasCivilJudc="N" hasBond="N" hasJudgment="N" hasInvstgn="N"
+					hasCustComp="Y" hasTermination="N" />
+			</DRPs>
+		</Indvl>
+		<Indvl>
+			<Info lastNm="JOHNSON" firstNm="ERIK" midNm="DORSEY"
+				indvlPK="2185673" actvAGReg="N"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185673" />
+			<OthrNms />
+			<CrntEmps>
+				<CrntEmp orgNm="CORNERSTONE ADVISORY" orgPK="142359"
+					str1="211 OLD PADONIA ROAD" city="HUNT VALLEY" state="MD"
+					cntry="United States" postlCd="21030">
+					<CrntRgstns>
+						<CrntRgstn regAuth="MD" regCat="RA" st="APPROVED"
+							stDt="2010-07-22" />
+						<CrntRgstn regAuth="TX" regCat="RA" st="APPROVED_RES"
+							stDt="2018-11-01" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="1061 BALTIMORE ANNAPOLIS BOULEVARD"
+							city="ARNOLD" state="MD" cntry="United States" postlCd="21012" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1991-11-26" />
+			</Exms>
+			<Dsgntns />
+			<PrevRgstns>
+				<PrevRgstn orgNm="PRIVATE FUND ADVISORS, INC."
+					orgPK="119130" regBeginDt="2013-02-07" regEndDt="2017-04-25">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="ARNOLD" state="MD" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+			</PrevRgstns>
+			<EmpHss>
+				<EmpHs fromDt="07/2010" orgNm="CORNERSTONE ADVISORY LLC"
+					city="ARNOLD" state="MD" />
+				<EmpHs fromDt="09/1997" orgNm="PRIVATE FUND ADVISORS, INC."
+					city="ARNOLD" state="MD" />
+			</EmpHss>
+			<OthrBuss>
+				<OthrBus
+					desc="PRIVATE FUND ADVISORS 1061 BALTIMORE ANNAPOLIS BLVD ARNOLD, MD 21012  INVESTMENT RELATED: YES  PRINCIPAL  START DATE: 09/1997  HOURS PER MONTH:1 HR   HOURS PER MONTH DURING SECURITIES TRADING HOURS:1 HR" />
+			</OthrBuss>
+			<DRPs>
+				<DRP hasRegAction="N" hasCriminal="N" hasBankrupt="N"
+					hasCivilJudc="N" hasBond="N" hasJudgment="N" hasInvstgn="N"
+					hasCustComp="Y" hasTermination="N" />
+			</DRPs>
+		</Indvl>
+		<Indvl>
+			<Info lastNm="CHOW" firstNm="ROBERT" midNm="MING"
+				indvlPK="2185699" actvAGReg="Y"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185699" />
+			<OthrNms />
+			<CrntEmps>
+				<CrntEmp orgNm="ROYAL ALLIANCE ASSOCIATES, INC."
+					orgPK="23131" str1="10 EXCHANGE PLACE" str2="SUITE 1410"
+					city="JERSEY CITY" state="NJ" cntry="United States" postlCd="07302">
+					<CrntRgstns>
+						<CrntRgstn regAuth="CA" regCat="RA" st="APPROVED"
+							stDt="2011-01-04" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="2629 TOWNSGATE RD" str2="SUITE 245"
+							city="WESTLAKE VILLAGE" state="CA" cntry="United States"
+							postlCd="91361" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1991-11-26" />
+			</Exms>
+			<Dsgntns />
+			<PrevRgstns>
+				<PrevRgstn orgNm="WEALTHCARE ALLIANCE, INC."
+					orgPK="127470" regBeginDt="2006-01-10" regEndDt="2009-12-31">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="WESTLAKE VILLAGE" state="CA" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+				<PrevRgstn orgNm="WEALTHCARE ALLIANCE, INC."
+					orgPK="127470" regBeginDt="2010-01-29" regEndDt="2011-02-04">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="WESTLAKE VILLAGE" state="CA" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+			</PrevRgstns>
+			<EmpHss>
+				<EmpHs fromDt="10/1991"
+					orgNm="ROYAL ALLIANCE ASSOCIATES, INC." city="THOUSAND OAKS"
+					state="CA" />
+			</EmpHss>
+			<OthrBuss>
+				<OthrBus
+					desc="1. ROBERT CHOW, INVESTMENT RELATED,100 E. THOUSAND OAKS BLVD. #152 THOUSAND OAKS, CA. 91360, OWNER, STARTED 1991, 5 HOURS PER MONTH, 2 HOURS PER MONTH DURING STH, INSURANCE SALES. 2.  CORPORATE REGISTERED INVESTMENT ADVISOR, ROYAL ALLIANCE, INVESTMENT RELATED,  ONE WORLD FINANCIAL CENTER, 14TH FLOOR, NEW YORK, NY,INVESTMENT ADVISORY REP, STARTED 1/3/2011, 0 HOURS PER MONTH, 0 HOURS PER MONTH DURING STH, NONE. AFFILIATED ONLY. NOT CURRENTLY CONDUCTING BUSINESS.  2. ROBERT CHOW - INSURANCE POSITION: owner NATURE: sole Proprietorship INVESTMENT RELATED: Yes NUMBER OF HOURS: 2 SECURITIES TRADING HOURS: 2 START DATE: 01/01/1991 ADDRESS: 2629 Townsgate Rd.#245, Westlake Village CA 91361, United States DESCRIPTION: sell insurance according to client&apos;s needs." />
+			</OthrBuss>
+			<DRPs />
+		</Indvl>
+		<Indvl>
+			<Info lastNm="REMBALSKY" firstNm="PETER" midNm="PAUL"
+				indvlPK="2185734" actvAGReg="Y"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185734" />
+			<OthrNms />
+			<CrntEmps>
+				<CrntEmp orgNm="OPPENHEIMER &amp; CO. INC." orgPK="249"
+					str1="85 BROAD STREET" str2="22ND FLOOR." city="NEW YORK"
+					state="NY" cntry="United States" postlCd="10004">
+					<CrntRgstns>
+						<CrntRgstn regAuth="CA" regCat="RA" st="APPROVED"
+							stDt="2009-03-20" />
+						<CrntRgstn regAuth="FL" regCat="RA" st="APPROVED"
+							stDt="2009-03-27" />
+						<CrntRgstn regAuth="NJ" regCat="RA" st="APPROVED"
+							stDt="2009-05-28" />
+						<CrntRgstn regAuth="PA" regCat="RA" st="APPROVED"
+							stDt="2009-03-23" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="1525 VALLEY CENTER PKWY"
+							str2="SUITE 160" city="BETHLEHEM" state="PA"
+							cntry="United States" postlCd="18017" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1992-01-08" />
+				<Exm exmCd="S65"
+					exmNm="Uniform Investment Adviser Law Examination"
+					exmDt="2006-04-25" />
+			</Exms>
+			<Dsgntns />
+			<PrevRgstns>
+				<PrevRgstn orgNm="ANDERSON &amp; STRUDWICK, INCORPORATED"
+					orgPK="48" regBeginDt="2006-04-26" regEndDt="2009-04-09">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="BETHLEHEM" state="PA" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+			</PrevRgstns>
+			<EmpHss>
+				<EmpHs fromDt="03/2009" orgNm="OPPENHEIMER &amp; CO. INC."
+					city="PITTSBURGH" state="PA" />
+			</EmpHss>
+			<OthrBuss />
+			<DRPs>
+				<DRP hasRegAction="N" hasCriminal="N" hasBankrupt="N"
+					hasCivilJudc="N" hasBond="N" hasJudgment="Y" hasInvstgn="N"
+					hasCustComp="Y" hasTermination="N" />
+			</DRPs>
+		</Indvl>
+		<Indvl>
+			<Info lastNm="MCGRATH" firstNm="LISA" indvlPK="2185761"
+				actvAGReg="Y"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185761" />
+			<OthrNms>
+				<OthrNm lastNm="PRAIRIE" firstNm="LISA" />
+				<OthrNm lastNm="PRAIRIE" firstNm="LISA" midNm="DANIELLE" />
+			</OthrNms>
+			<CrntEmps>
+				<CrntEmp
+					orgNm="TIAA-CREF INDIVIDUAL &amp; INSTITUTIONAL SERVICES, LLC"
+					orgPK="20472" str1="730 THIRD AVENUE" city="NEW YORK" state="NY"
+					cntry="United States" postlCd="10017-3206">
+					<CrntRgstns>
+						<CrntRgstn regAuth="CT" regCat="RA" st="APPROVED"
+							stDt="2005-02-09" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="225 HIGH RIDGE ROAD"
+							str2="SUITE# 115" city="STAMFORD" state="CT"
+							cntry="United States" postlCd="06905" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1992-03-31" />
+				<Exm exmCd="S65"
+					exmNm="Uniform Investment Adviser Law Examination"
+					exmDt="2005-05-24" />
+			</Exms>
+			<Dsgntns />
+			<PrevRgstns />
+			<EmpHss>
+				<EmpHs fromDt="09/1991" orgNm="TIAA" city="STAMFORD"
+					state="CT" />
+				<EmpHs fromDt="09/1991"
+					orgNm="TIAA-CREF INDIVIDUAL &amp; INSTITUTIONAL SERVICES,LLC"
+					city="STAMFORD" state="CT" />
+			</EmpHss>
+			<OthrBuss>
+				<OthrBus
+					desc="(1) EFFECTIVE 01/27/2010, BULLDOGS, NOT FOR PROFIT 501C3 ORGANIZATION,OFFICER - TREASURER, Home Address, RIVERSIDE, CT  06878, APPROXIMATELY 1 HOUR DEVOTED PER WEEK. (2) LANDLORD OF 3 RENTAL PROPERTIES  Home Address, RIVERSIDE, CT 06878  EFFECTIVE DATE:  1/1/2011  DEVOTE 2 HOURS PER WEEK.  ZERO HOURS DEVOTED DURING SECURITIES TRADING HOURS." />
+			</OthrBuss>
+			<DRPs>
+				<DRP hasRegAction="N" hasCriminal="N" hasBankrupt="N"
+					hasCivilJudc="N" hasBond="N" hasJudgment="N" hasInvstgn="N"
+					hasCustComp="Y" hasTermination="N" />
+			</DRPs>
+		</Indvl>
+		<Indvl>
+			<Info lastNm="AMMONS" firstNm="THOMAS" midNm="CARL"
+				indvlPK="2185784" actvAGReg="Y"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185784" />
+			<OthrNms />
+			<CrntEmps>
+				<CrntEmp orgNm="LPL FINANCIAL LLC" orgPK="6413"
+					str1="75 STATE STREET, 22ND FLOOR" city="BOSTON" state="MA"
+					cntry="United States" postlCd="02109">
+					<CrntRgstns>
+						<CrntRgstn regAuth="CT" regCat="RA" st="APPROVED"
+							stDt="2017-11-29" />
+						<CrntRgstn regAuth="NJ" regCat="RA" st="APPROVED"
+							stDt="2017-11-29" />
+						<CrntRgstn regAuth="NC" regCat="RA" st="APPROVED"
+							stDt="2017-11-29" />
+						<CrntRgstn regAuth="PA" regCat="RA" st="APPROVED"
+							stDt="2017-11-29" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="633 ROUTE 211 E" city="MIDDLETOWN"
+							state="NY" cntry="United States" postlCd="10941" />
+						<BrnchOfLoc str1="140 CRYSTAL RUN RD" city="MIDDLETOWN"
+							state="NY" cntry="United States" postlCd="10941" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1992-02-14" />
+			</Exms>
+			<Dsgntns>
+				<Dsgntn dsgntnNm="Personal Financial Specialist" />
+			</Dsgntns>
+			<PrevRgstns>
+				<PrevRgstn orgNm="NATIONAL PLANNING CORPORATION"
+					orgPK="29604" regBeginDt="2008-06-04" regEndDt="2017-12-01">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="TARRYTOWN" state="NY" />
+						<BrnchOfLoc city="MIDDLETOWN" state="NY" />
+						<BrnchOfLoc city="LOS ANGELES" state="CA" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+			</PrevRgstns>
+			<EmpHss>
+				<EmpHs fromDt="04/2008" toDt="12/2017"
+					orgNm="NATIONAL PLANNING CORPORATION" city="SANTA MONICA"
+					state="CA" />
+				<EmpHs fromDt="03/1999" orgNm="AFFINITY ADV" city="MONROE"
+					state="NY" />
+				<EmpHs fromDt="11/2017" orgNm="LPL FINANCIAL LLC"
+					city="MIDDLETOWN" state="NY" />
+			</EmpHss>
+			<OthrBuss>
+				<OthrBus
+					desc="1. 11/29/2017 - AFFINITY ADVANTAGE FINANCIAL SOLUTIONS - Investment Related - At Reported Business Location(s) - DBA for LPL Business (entity for LPL business) - Start Date 3/14/2014 - 30 Hours Per Month/0 Hours During Securities Trading - Time Spent 75%.    2. 11/29/2017 - AFFINITY ADVANTAGE SENIOR ADVISORS - Investment Related - At Reported Business Location(s) - Non-Variable Insurance - Start Date 4/4/2014 - 20 Hours Per Month/0 Hours During Securities Trading - Time Spent 25% - OWNER - Medicare and Group Health.         3. 11/29/2017 - AFFINITY ADVANTAGE INC - Investment Related - At Reported Business Location(s) - Tax Prep/Accounting/CPA - Start Date 2010 - 10 Hours Per Month/0 Hours During Securities Trading - PRESIDENT/CPA/PFS.    4. 11/29/2017 - THOMAS AMMONS CPA/PFS - Investment Related - At Reported Business Location(s) - Tax Prep/Accounting/CPA - Start Date 3/14/2014 - 10 Hours Per Month/0 Hours During Securities Trading." />
+			</OthrBuss>
+			<DRPs />
+		</Indvl>
+		<Indvl>
+			<Info lastNm="RIVERA" firstNm="STEVEN" midNm="LOUIS"
+				indvlPK="2185785" actvAGReg="Y"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185785" />
+			<OthrNms>
+				<OthrNm lastNm="RIVERA" firstNm="STEVEN" midNm="L" />
+			</OthrNms>
+			<CrntEmps>
+				<CrntEmp orgNm="JANNEY MONTGOMERY SCOTT LLC" orgPK="463"
+					str1="1717 ARCH STREET" city="PHILADELPHIA" state="PA"
+					cntry="United States" postlCd="19103">
+					<CrntRgstns>
+						<CrntRgstn regAuth="NJ" regCat="RA" st="APPROVED"
+							stDt="2006-06-30" />
+						<CrntRgstn regAuth="TX" regCat="RA" st="APPROVED"
+							stDt="2007-02-27" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="888 VETERANS MEMORIAL HIGHWAY"
+							str2="SUITE 505" city="HAUPPAUGE" state="NY"
+							cntry="United States" postlCd="11788" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1991-11-29" />
+				<Exm exmCd="S65"
+					exmNm="Uniform Investment Adviser Law Examination"
+					exmDt="2006-06-29" />
+			</Exms>
+			<Dsgntns />
+			<PrevRgstns />
+			<EmpHss>
+				<EmpHs fromDt="08/1991" orgNm="JANNEY MONTGOMERY SCOTT INC."
+					city="BOHEMIA" state="NY" />
+			</EmpHss>
+			<OthrBuss />
+			<DRPs>
+				<DRP hasRegAction="N" hasCriminal="N" hasBankrupt="N"
+					hasCivilJudc="N" hasBond="N" hasJudgment="N" hasInvstgn="N"
+					hasCustComp="Y" hasTermination="N" />
+			</DRPs>
+		</Indvl>
+		<Indvl>
+			<Info lastNm="MORROW" firstNm="ROBERT" midNm="STOWERS"
+				indvlPK="2185795" actvAGReg="Y"
+				link="http://www.adviserinfo.sec.gov/IAPD/Individual/2185795" />
+			<OthrNms>
+				<OthrNm lastNm="MORROW" firstNm="BOBBY" />
+				<OthrNm lastNm="MORROW" firstNm="ROBERT" />
+				<OthrNm lastNm="MORROW" firstNm="ROBERT" midNm="S" />
+			</OthrNms>
+			<CrntEmps>
+				<CrntEmp orgNm="SECURIAN FINANCIAL SERVICES, INC."
+					orgPK="15296" str1="400 ROBERT STREET NORTH" city="ST PAUL"
+					state="MN" cntry="United States" postlCd="55101-2098">
+					<CrntRgstns>
+						<CrntRgstn regAuth="SC" regCat="RA" st="APPROVED"
+							stDt="2015-12-08" />
+					</CrntRgstns>
+					<BrnchOfLocs>
+						<BrnchOfLoc str1="260 West Coleman Blvd" str2="Suite C"
+							city="Mt Pleasant" state="SC" cntry="United States"
+							postlCd="29464" />
+					</BrnchOfLocs>
+				</CrntEmp>
+			</CrntEmps>
+			<Exms>
+				<Exm exmCd="S63"
+					exmNm="Uniform Securities Agent State Law Examination"
+					exmDt="1991-10-18" />
+				<Exm exmCd="S65"
+					exmNm="Uniform Investment Adviser Law Examination"
+					exmDt="1999-12-15" />
+			</Exms>
+			<Dsgntns>
+				<Dsgntn dsgntnNm="Chartered Financial Consultant" />
+			</Dsgntns>
+			<PrevRgstns>
+				<PrevRgstn orgNm="NEW ENGLAND SECURITIES" orgPK="615"
+					regBeginDt="2008-02-20" regEndDt="2015-01-02">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="MT. PLEASANT" state="SC" />
+						<BrnchOfLoc city="CHARLESTON" state="SC" />
+						<BrnchOfLoc city="CHARLESTON" state="SC" />
+						<BrnchOfLoc city="CHARLESTON" state="SC" />
+						<BrnchOfLoc city="CHARLESTON" state="SC" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+				<PrevRgstn
+					orgNm="LINCOLN FINANCIAL SECURITIES CORPORATION" orgPK="3870"
+					regBeginDt="2000-05-09" regEndDt="2008-02-04">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="CHARLESTON" state="SC" />
+						<BrnchOfLoc city="DANIEL ISLAND" state="SC" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+				<PrevRgstn orgNm="MSI FINANCIAL SERVICES, INC."
+					orgPK="14251" regBeginDt="2015-01-02" regEndDt="2015-11-25">
+					<BrnchOfLocs>
+						<BrnchOfLoc city="CHARLESTON" state="SC" />
+						<BrnchOfLoc city="CHARLESTON" state="SC" />
+					</BrnchOfLocs>
+				</PrevRgstn>
+			</PrevRgstns>
+			<EmpHss>
+				<EmpHs fromDt="12/2015" orgNm="Shoemaker Financial"
+					city="Mt Pleasant" state="SC" />
+				<EmpHs fromDt="01/2008" toDt="11/2015"
+					orgNm="NEW ENGLAND SECURITIES" city="CHARLESTON" state="SC" />
+				<EmpHs fromDt="01/2015" toDt="11/2015"
+					orgNm="METLIFE SECURITIES INC." city="CHARLESTON" state="SC" />
+				<EmpHs fromDt="12/2015"
+					orgNm="Securian Financial Services Inc" city="St Paul" state="MN" />
+				<EmpHs fromDt="12/2015" orgNm="Minnesota Life Insurance CO"
+					city="St Paul" state="MN" />
+			</EmpHss>
+			<OthrBuss>
+				<OthrBus
+					desc="ESTATE PLANNING COUNCIL OF CHARLESTON POSITION: Member NATURE: Board Member INVESTMENT RELATED: No NUMBER OF HOURS: 4 SECURITIES TRADING HOURS: 2 START DATE: 07/01/2015 ADDRESS: , Mt. Pleasant SC , United States DESCRIPTION: Member" />
+			</OthrBuss>
+			<DRPs>
+				<DRP hasRegAction="N" hasCriminal="N" hasBankrupt="N"
+					hasCivilJudc="N" hasBond="N" hasJudgment="Y" hasInvstgn="N"
+					hasCustComp="N" hasTermination="N" />
+			</DRPs>
+		</Indvl>
+	</Indvls>
+</IAPDIndividualReport>

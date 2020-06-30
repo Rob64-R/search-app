@@ -15,6 +15,14 @@
 					<munit:variable key="qParams" value="#[MunitTools::getResourceAsStream('sample_data/qParams.json')]" encoding="UTF-8" mediaType="application/json" />
 				</munit:variables>
 			</munit:set-event>
+			<munit-tools:mock-when doc:name="Mock File Read" doc:id="ec7bbf29-23ab-4835-ba0e-fc355a94c8b0" processor="file:read">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Read Original File" attributeName="doc:name" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[MunitTools::getResourceAsStream('sample_data/IndivTEST.xml')]" mediaType="application/xml" encoding="ISO-8859-1" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
 		</munit:behavior>
 		<munit:execution >
 			<flow-ref doc:name="Flow-ref to Read_File" doc:id="0bb38b59-7bc9-465d-b9e3-dc55fcbc9fef" name="Read_File"/>

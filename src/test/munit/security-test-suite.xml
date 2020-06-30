@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="security-test-suite.xml" />
+	<munit:test name="security-test-suite-Basic_SecurityTest" doc:id="856cc165-8c8d-4ced-b244-97ad6420415a" description="Test">
+		<munit:behavior >
+			<munit:set-event doc:name="Set Event" doc:id="74aed431-883f-4000-b523-862035d3f43b" />
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Basic_Security" doc:id="e6c1c2f4-0888-4ea1-bdc5-cfd45bfb183e" name="Basic_Security"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="a55108a1-ceb4-4c66-b403-57a8ecd38764" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
