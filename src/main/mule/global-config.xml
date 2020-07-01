@@ -17,5 +17,11 @@ http://www.mulesoft.org/schema/mule/spring http://www.mulesoft.org/schema/mule/s
 		<file:connection workingDir="${dir.path}" />
 	</file:config>
 	<os:object-store name="Object_store" doc:name="Object store" doc:id="1c3419fe-468d-4228-8093-894461bb3830" persistent="false"/>
+	<configuration doc:name="Configuration" doc:id="70605bdb-3e6a-4421-8815-9d75080d8c92" defaultErrorHandler-ref="global-configError_Handler" />
+	<error-handler name="global-configError_Handler" doc:id="15a6f3a6-84d9-4511-a505-4625dd67c9c2" >
+		<on-error-continue enableNotifications="true" logException="true" doc:name="On Error Continue" doc:id="c823cad7-b203-4069-bfc4-62b23df0cc6e" type="MULE:SERVER_SECURITY">
+			<set-payload value="User or password may be incorrect" doc:name="Set Payload" doc:id="0134f801-d41d-4d35-b7bd-c84464db4e28" />
+		</on-error-continue>
+	</error-handler>
 
 </mule>
