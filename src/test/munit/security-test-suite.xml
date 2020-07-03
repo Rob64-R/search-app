@@ -10,14 +10,14 @@
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="security-test-suite.xml" />
-	<munit:test name="security-test-suite-Basic_SecurityTest" doc:id="856cc165-8c8d-4ced-b244-97ad6420415a" description="Test" expectedErrorType="MULE:SERVER_SECURITY">
+	<munit:test name="Basic_SecurityTest" doc:id="856cc165-8c8d-4ced-b244-97ad6420415a" description="Test" expectedErrorType="APP:UNRECOGNIZED_USER">
 		<munit:behavior>
 			<munit-tools:mock-when doc:name="Mock when" doc:id="dc5c9bad-c27f-4f6f-abfa-cdf6dc0e99d3" processor="http:basic-security-filter">
 				<munit-tools:with-attributes >
 					<munit-tools:with-attribute whereValue="Basic security filter" attributeName="doc:name" />
 				</munit-tools:with-attributes>
 				<munit-tools:then-return >
-					<munit-tools:error typeId="MULE:SERVER_SECURITY" />
+					<munit-tools:error typeId="APP:UNRECOGNIZED_USER" />
 				</munit-tools:then-return>
 			</munit-tools:mock-when>
 		</munit:behavior>
@@ -32,6 +32,4 @@
 			</munit-tools:verify-call>
 		</munit:validation>
 	</munit:test>
-
-
 </mule>

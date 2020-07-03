@@ -8,9 +8,9 @@
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="implementation-test-suite.xml" />
-	<munit:test name="implementation-test-suite-Read_FileTest" doc:id="bd39d59b-fdd7-44ed-ba61-2f750b664919" description="Test">
+	<munit:test name="Read_File_SuccessTest" doc:id="bd39d59b-fdd7-44ed-ba61-2f750b664919" description="Test" ignore="true">
 		<munit:behavior>
-			<munit:set-event doc:name="Set Event" doc:id="4f336537-4c35-4a9f-9afa-d5adf8dfdb53" >
+			<munit:set-event doc:name="Set Event preliminary query parameters" doc:id="4f336537-4c35-4a9f-9afa-d5adf8dfdb53" >
 				<munit:variables >
 					<munit:variable key="qParams" value="#[MunitTools::getResourceAsStream('sample_data/qParams.json')]" encoding="UTF-8" mediaType="application/json" />
 				</munit:variables>
@@ -28,7 +28,52 @@
 			<flow-ref doc:name="Flow-ref to Read_File" doc:id="0bb38b59-7bc9-465d-b9e3-dc55fcbc9fef" name="Read_File"/>
 		</munit:execution>
 		<munit:validation >
-			<munit-tools:assert-that doc:name="Assert that" doc:id="cbd9e4b5-f65e-4332-82ba-dc99249947d3" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+			<munit-tools:assert-that doc:name="Assert that payload is not null" doc:id="cbd9e4b5-f65e-4332-82ba-dc99249947d3" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
+			<munit-tools:assert-that doc:name="Assert that payload is in correct format" doc:id="882cfa44-0a9a-4a92-9908-c9fb67b1c994" expression="#[payload]" is="#[MunitTools::equalTo(readUrl('classpath://sample_data/FormatIndivsTEST.json', 'application/json'))]" />
+		</munit:validation>
+	</munit:test>
+	<munit:test name="Read_File_ErrorTest" doc:id="e2d3745b-4c7c-4550-b3a9-66d9fa47b31d" description="Test" expectedErrorType="APP:FILE_UNAVAILABLE" ignore="true">
+		<munit:behavior >
+			<munit:set-event doc:name="Set Event preliminary query parameters" doc:id="9fa2bec9-3a40-4734-b6e2-ea861f7bb177" >
+				<munit:variables >
+					<munit:variable key="qParams" value="#[MunitTools::getResourceAsStream('sample_data/qParams.json')]" encoding="UTF-8" mediaType="application/json" />
+				</munit:variables>
+			</munit:set-event>
+			<munit-tools:mock-when doc:name="Mock File Read" doc:id="b65508f0-7e5e-4b60-8481-6218d0f822de" processor="file:read">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Read Original File" attributeName="doc:name" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:error typeId="APP:FILE_UNAVAILABLE" />
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Read_File" doc:id="90981173-7da0-4c41-ba2b-2e69297d2e6b" name="Read_File"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:verify-call doc:name="Verify call to global_error_handler" doc:id="4cf176f8-f347-4107-a652-6d574e6097d0" processor="set-payload">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="Unable to get source file" attributeName="value" />
+				</munit-tools:with-attributes>
+			</munit-tools:verify-call>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="implementation-test-suite-FilteringTest" doc:id="67623a31-4405-4722-bb9a-bd077534ec0a" description="Test">
+		<munit:behavior >
+			<munit:set-event doc:name="Set Event" doc:id="41db9c6c-d291-47bc-a552-c566dc22d3c9" >
+				<munit:payload value="#[readUrl('classpath://sample_data/FormatIndivsTEST.json', 'application/json')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:variables >
+					<munit:variable key="OSkey" value='"search_key=firstNm&amp;search_value=francisco"' />
+					<munit:variable key="qParams" value="#[readUrl('classpath://sample_data/qParams.json','application/json')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to Filtering" doc:id="dfe2e4f7-7681-493b-93e7-e31cb991aac8" name="Filtering"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="8bc919c5-6bb7-47fb-9b0c-eb396385c70f" expression="#[payload]" is="#[MunitTools::notNullValue()]"/>
 		</munit:validation>
 	</munit:test>
 

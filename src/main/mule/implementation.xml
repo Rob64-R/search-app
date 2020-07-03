@@ -42,7 +42,9 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 	</sub-flow>
 	<sub-flow name="Read_File" doc:id="4a7d867c-71ba-4308-ae81-7a1640db00d1">
 		<logger level="INFO" doc:name="Logger" doc:id="b1a3675a-cad0-4106-a2d5-89f1b7c4a4e6" message="filtering"/>
-		<file:read doc:name="Read Original File" doc:id="51391040-48b9-437f-94c8-e6bc8b42d806" config-ref="File_Config" path="${file.path}" />
+		<file:read doc:name="Read Original File" doc:id="51391040-48b9-437f-94c8-e6bc8b42d806" config-ref="File_Config" path="${file.path}" >
+			<error-mapping targetType="APP:FILE_UNAVAILABLE"/>
+		</file:read>
 		<ee:transform doc:name="Transform Individuals" doc:id="55e8887a-1f77-4055-9cec-3b5d17234c45">
 			<ee:message>
 						<ee:set-payload resource="C:\Users\Administrator\AnypointStudio\studio-workspace\training-search-api-TESTING\src\main\resources\dataweave\transform_Indivs.dwl" />
@@ -57,6 +59,7 @@ http://www.mulesoft.org/schema/mule/validation http://www.mulesoft.org/schema/mu
 	<sub-flow name="Filtering" doc:id="115897d7-6e6a-45dc-943c-13c5256ba666" >
 		<os:store doc:name="Store individuals in cache" doc:id="66635fd0-f30a-47a4-bd5f-b612ce1c384a" key="#[vars.OSkey]" objectStore="Object_store" />
 		<set-variable value="#[payload]" doc:name="result" doc:id="accbab87-565c-4fa1-81c5-fa9698051576" variableName="result" />
+		<logger level="INFO" doc:name="Logger" doc:id="92491c43-b1a1-40a7-a00e-f30e1289a0f6" message='#[vars.qParams -"search_key" -"search_value"]'/>
 		<foreach doc:name="Check all queries" doc:id="4071e1ec-2748-46a6-9570-f6d58cb6fdc0" collection='#[vars.qParams -"search_key" -"search_value"]'>
 			<ee:transform doc:name="Filter results" doc:id="ebb2a566-309d-4217-9330-033430e408d2">
 						<ee:message>
@@ -83,6 +86,14 @@ var end = if(endTemp < sizeOf(vars.result))
 			else
 				sizeOf(vars.result)
 ---
+if(sizeOf(vars.result) == 1){
+	results: vars.result,
+	MiscInfo: {
+		page: vars.pagination.page_number,
+		Showing: "" ++ "1" ++ " of " ++ sizeOf(vars.result) ++ " results"
+	}
+}
+else
 {
 	results: vars.result[start to end],
 	MiscInfo: {
@@ -132,6 +143,7 @@ var end = if(endTemp < sizeOf(payload))
 			<otherwise>
 				<logger level="INFO" doc:name="Logger" doc:id="5f1258b3-518a-4c79-9b0f-9eb343a4fb30" message="in cache" />
 				<flow-ref doc:name="Read File" doc:id="b790683b-e868-49ce-8c85-b5016d2f2dd7" name="Read_File"/>
+				<flow-ref doc:name="Filtering" doc:id="b4389063-c656-4694-8c7e-541c5233a74d" name="Filtering" />
 			</otherwise>
 		</choice>
 	</sub-flow>
